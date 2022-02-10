@@ -27,12 +27,13 @@ pushStringLength(stringArray, stringLength)('abc');
 //***************************************************** */
 // f: [String] -> {String: any} -> {String: any}
 //***************************************************** */
-var f = function (a, g) {
-    var w = a.reduce(function (o, g) { return Object.assign(o, g); }, {});
-    return w;
+var convertToJson = function (a, g) {
+    var json = Object.assign(g, a);
+    return json;
 };
 var stringArray2 = ['ab', 'abc', 'abcd'];
-console.log(f(stringArray2, { "name": 2 }));
+console.log(convertToJson(stringArray2, { "name": 2 }));
+console.log(convertToJson(stringArray2, {}));
 //***************************************************** */
 // f: [A] → [B] → [[A,B]]
 //***************************************************** */
