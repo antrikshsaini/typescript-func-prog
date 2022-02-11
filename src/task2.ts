@@ -120,10 +120,10 @@ const mapReduce = () => {
             obj = { status: 'success', data: json }
             let count: number = 0
             if (obj.status === "success") {
-                obj.data.map(item => {
-
-                    item.postId == 1 ? count = count + 1 : null
-                })
+                let arr: number[] = obj.data.map(item =>
+                    item.postId == 1 ? 1 : 0
+                )
+                count = arr.reduce((prev, curr) => prev + curr)
             }
             return count
         }).catch(err => console.log(err))
