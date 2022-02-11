@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var R = require("ramda");
 var fetchMockData = function (option) { return __awaiter(void 0, void 0, void 0, function () {
     var reponse, result, err_1;
@@ -51,8 +51,7 @@ var fetchMockData = function (option) { return __awaiter(void 0, void 0, void 0,
                 return [4 /*yield*/, reponse.json()];
             case 2:
                 result = _a.sent();
-                match({ status: 'success', data: result });
-                // console.log(result)
+                console.log(result);
                 return [2 /*return*/, { status: 'success', data: result }];
             case 3:
                 err_1 = _a.sent();
@@ -66,27 +65,19 @@ var fetchMockData = function (option) { return __awaiter(void 0, void 0, void 0,
 // *************************Part 2nd****************************** //
 var commentPath = function (postId) { return "comments?postId=".concat(postId); };
 var fetchComments = R.compose(fetchMockData, commentPath)(3);
-// console.log(fetchComments)
+console.log(fetchComments);
 // return all comments of postId given
 var postPath = function (userId) { return "posts?userId=".concat(userId); };
 var fetchPosts = R.compose(fetchMockData, postPath)(3);
-var match = function (value) {
-    switch (value.status) {
-        case "error":
-            return value.error;
-        case "success":
-            return value.data;
+console.log(fetchPosts);
+// This will return all the posts that belong to the userId given
+// *************************Part 3rd****************************** //
+var match = function (a) {
+    if (a.status === "success") {
+        return a.data;
+    }
+    else {
+        return a.error;
     }
 };
-// *************************Part 4th****************************** //
-var fetchCommentsOfPost = function () {
-    return new Promise(function (resolve) {
-        fetch('https://jsonplaceholder.typicode.com/posts/1/comments')
-            .then(function (response) { return response.json(); })
-            .then(function (json) {
-            var obj = match({ status: 'success', data: json });
-            resolve(obj);
-        });
-    });
-};
-console.log(fetchCommentsOfPost());
+//# sourceMappingURL=task2.js.map
