@@ -9,11 +9,11 @@
 
 
 const arrayRemove = <A>(
-    a: A,
-    b: Array<A>,
-  ): Array<A> => b.filter((i) => a !== i);
+  a: A,
+  b: Array<A>,
+): Array<A> => b.filter((i) => a !== i);
 
-  const arr1 = [1,2,3,4,5,6]
+const arr1 = [1, 2, 3, 4, 5, 6]
 
 
 // console.log(arrayRemove(3,arr1))   Output: [ 1, 2, 4, 5, 6 ]
@@ -44,11 +44,11 @@ const arr2 = [2, 4, 6, 7, 8];
 
 
 const pushStringLength = (
-  a:string[],
-  g:(b:string)=>any,
-): (c:string)=> any => (c:string):any => a.push(g(c));
+  a: string[],
+  g: (b: string) => any,
+): (c: string) => any => (c: string): any => a.push(g(c));
 
-const stringLength = (a:string):any => a.length;
+const stringLength = (a: string): any => a.length;
 const stringArray = ['ab', 'abc', 'abcd'];
 
 pushStringLength(stringArray, stringLength)('abc');
@@ -64,11 +64,11 @@ pushStringLength(stringArray, stringLength)('abc');
 
 
 const convertToJson = (
-  a:string[],
-  g:{[key:string]:any},     // g:Record<string,any>
-): {[key:string]:any} => {
-    const json:{[key:string]:any}  = Object.assign(g,a);
-    return json
+  a: string[],
+  g: { [key: string]: any },     // g:Record<string,any>
+): { [key: string]: any } => {
+  const json: { [key: string]: any } = Object.assign(g, a);
+  return json
 }
 
 const stringArray2 = ['ab', 'abc', 'abcd'];
@@ -84,13 +84,13 @@ const stringArray2 = ['ab', 'abc', 'abcd'];
 
 
 const concat = <A, B>(
-  a:Array<A>,
-  b:Array<B>,
-):Array<A | B> => {
-  const c:Array<A | B> = a;
+  a: Array<A>,
+  b: Array<B>,
+): Array<A | B> => {
+  const c: Array<A | B> = a;
   b.map((i) => c.push(i));
   return c;
 };
 
-// console.log(concat(['a', 'b'], [1, 2]));  Output: [ 'a', 'b', 1, 2 ]
+// console.log(concat(['a', 'b'], [1, 2])); //  Output: [ 'a', 'b', 1, 2 ]
 // returns new array with combining first array to second array

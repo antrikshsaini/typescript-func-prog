@@ -107,7 +107,8 @@
     "rootDir": "./src",
     "module": "commonjs",
     "outDir": "dist",
-    "sourceMap": true
+    "sourceMap": true,
+    "lib": ["DOM"],
   },
   "include": [
     "src/**/*.ts",

@@ -1,5 +1,7 @@
 // Task 1 (Function implementations)
 // Given a function signature, implement and name the function
+// npx tsc task.ts       //command to compile and generate .js file
+// node task1.js          //command to run js file
 //***************************************************** */
 // f: A -> [A] -> [A]
 //***************************************************** */
@@ -32,8 +34,9 @@ var convertToJson = function (a, g) {
     return json;
 };
 var stringArray2 = ['ab', 'abc', 'abcd'];
-console.log(convertToJson(stringArray2, { "name": 2 }));
-console.log(convertToJson(stringArray2, {}));
+// console.log(convertToJson(stringArray2,{"name": 2}))   //Output: { '0': 'ab', '1': 'abc', '2': 'abcd', name: 2 }
+// console.log(convertToJson(stringArray2,{}))   //Output: { '0': 'ab', '1': 'abc', '2': 'abcd' }
+// it takes string array convert to json object, an object can also be added
 //***************************************************** */
 // f: [A] → [B] → [[A,B]]
 //***************************************************** */
@@ -42,5 +45,5 @@ var concat = function (a, b) {
     b.map(function (i) { return c.push(i); });
     return c;
 };
-// console.log(concat(['a', 'b'], [1, 2]));  Output: [ 'a', 'b', 1, 2 ]
+console.log(concat(['a', 'b'], [1, 2])); //  Output: [ 'a', 'b', 1, 2 ]
 // returns new array with combining first array to second array
