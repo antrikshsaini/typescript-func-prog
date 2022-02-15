@@ -49,6 +49,23 @@ const fail = <T, G>(error: G): ProgressOption<T, G> => {
 
 }
 
+// class implementation ///////////////////////////////////////////////
+class notStarted2<T> {
+    readonly __tag = "notStarted";
+}
+class progress2<T> {
+    readonly __tag = "progress";
+}
+class finished2<T> {
+    readonly __tag = "finished";
+    val: T;
+    constructor(val: T) { this.val = val }
+}
+class fail2<G> {
+    readonly __tag = "fail";
+    val: G;
+    constructor(val: G) { this.val = val }
+}
 
 // typeGuards /////////////////////////////////////////////////////////
 
@@ -81,6 +98,7 @@ const fold = <T, G>(option: ProgressOption<T, G>, d: () => T | G): T | G => {
 // finished(2)
 // finished("hello")
 // console.log("Number of times progress finishes", finishCount)
+// console.log(new finished2(2).val)
 
 
 
