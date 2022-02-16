@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@types/ramda": "^0.27.64",
+    "pattern-matching-ts": "^2.0.0",
     "ramda": "^0.28.0"
   }
 }
