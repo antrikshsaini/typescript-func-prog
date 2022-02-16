@@ -12,7 +12,7 @@ const isSome = <T>(o: Option<T>): o is Some<T> => o.__tag == "some";
 const fold1 = <T>(o: Option<T>, d: () => T): T =>
     isSome(o) ? o.val : d();
 
-const match = <T, T2>(
+const match2 = <T, T2>(
     o: Option<T>,
     f: (t: T) => T2,
     d: () => T2
@@ -30,7 +30,7 @@ const x: Option<number> = some(1);
 
 //kind of cunstructor
 const bar = (o: Option<number>) => {
-    const x: string = match(
+    const x: string = match2(
         o,
         (v: number) => v.toString(),
         () => "none"
