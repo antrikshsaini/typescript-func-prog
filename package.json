@@ -19,6 +19,7 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
+    "@practical-fp/union-types": "^1.5.1",
     "@types/ramda": "^0.27.64",
     "pattern-matching-ts": "^2.0.0",
     "ramda": "^0.28.0"
