@@ -77,7 +77,25 @@ const stringArray2 = ['ab', 'abc', 'abcd'];
 
 // it takes string array convert to json object, an object can also be added
 
-
+const filterByKey = (
+  a: string[],
+  g: { [key: string]: any },
+): { [key: string]: any } => {
+  const asArray = Object.entries(g)
+  const filterdArr = asArray.filter(([key, value]) => a.indexOf(key) > -1)
+  let obj: { [key: string]: any } = {};
+  filterdArr.forEach((v) => {
+    // Extract the key and the value
+    let key = v[0];
+    let value = v[1];
+    // Add the key and value to
+    // the object
+    obj[key] = value;
+  });
+  // Return the object
+  return obj;
+}
+// console.log(filterByKey(["a", "b"], { "a": 1, "c": 3, "b": 2 })) // { a: 1, b: 2 }
 //***************************************************** */
 // f: [A] → [B] → [[A,B]]
 //***************************************************** */
@@ -92,5 +110,12 @@ const concat = <A, B>(
   return c;
 };
 
+const zip = <A, B>(
+  a: Array<A>,
+  b: Array<B>
+): Array<Array<A | B>> => {
+  return a.map((val, i) => [val, b[i]])
+}
+// console.log(zip([1, 3], ["a", "b"])) // [ [ 1, 'a' ], [ 3, 'b' ] ]
 // console.log(concat(['a', 'b'], [1, 2])); //  Output: [ 'a', 'b', 1, 2 ]
 // returns new array with combining first array to second array

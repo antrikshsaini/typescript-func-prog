@@ -37,6 +37,26 @@ var stringArray2 = ['ab', 'abc', 'abcd'];
 // console.log(convertToJson(stringArray2,{"name": 2}))   //Output: { '0': 'ab', '1': 'abc', '2': 'abcd', name: 2 }
 // console.log(convertToJson(stringArray2,{}))   //Output: { '0': 'ab', '1': 'abc', '2': 'abcd' }
 // it takes string array convert to json object, an object can also be added
+var filterByKey = function (a, g) {
+    var asArray = Object.entries(g);
+    var filterdArr = asArray.filter(function (_a) {
+        var key = _a[0], value = _a[1];
+        return a.indexOf(key) > -1;
+    });
+    // console.log(filterdArr)
+    var obj = {};
+    filterdArr.forEach(function (v) {
+        // Extract the key and the value
+        var key = v[0];
+        var value = v[1];
+        // Add the key and value to
+        // the object
+        obj[key] = value;
+    });
+    // Return the object
+    return obj;
+};
+console.log(filterByKey(["a", "b"], { "a": 1, "c": 3, "b": 2 }));
 //***************************************************** */
 // f: [A] → [B] → [[A,B]]
 //***************************************************** */
@@ -45,5 +65,9 @@ var concat = function (a, b) {
     b.map(function (i) { return c.push(i); });
     return c;
 };
-console.log(concat(['a', 'b'], [1, 2])); //  Output: [ 'a', 'b', 1, 2 ]
+var zip = function (a, b) {
+    return a.map(function (val, i) { return [val, b[i]]; });
+};
+// console.log(zip([1, 3], ["a", "b"])) // [ [ 1, 'a' ], [ 3, 'b' ] ]
+// console.log(concat(['a', 'b'], [1, 2])); //  Output: [ 'a', 'b', 1, 2 ]
 // returns new array with combining first array to second array
