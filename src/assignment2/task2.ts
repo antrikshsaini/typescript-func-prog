@@ -94,6 +94,37 @@ const match = <T>(value: Either<T>): string | T[] => {
 
 }
 
+// simple match //
+
+const match2 = <T extends Entity, T2>(
+    value: ApiResponse<T>,
+    success: (data: T[]) => T2,
+    error: (err: string) => T2,
+    d: () => T2): T2 => {
+    if (value.status === "error") {
+        return error("Something Went Wrong")
+    }
+    else if (value.status === "success") {
+        return success(value.data)
+    }
+    else {
+        return d()
+    }
+}
+
+// currying //
+
+const match3 = <T extends Entity, T2>(success: (data: T[]) => T2) => (error: (err: string) => T2) => (d: () => T2) => (value: ApiResponse<T>): T2 => {
+    if (value.status === "error") {
+        return error("Something Went Wrong")
+    }
+    else if (value.status === "success") {
+        return success(value.data)
+    }
+    else {
+        return d()
+    }
+}
 // *************************Part 4th****************************** //
 
 const fetchCommentsOfPost = (): Promise<Comment[] | string> => {
