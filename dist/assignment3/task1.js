@@ -1,58 +1,49 @@
-// access Methods  ////////////////////////////////////////////////////
-var finishCount = 0;
-var failCount = 0;
-var notStarted = function () { return { __tag: "notStarted" }; };
-var progress = function () { return { __tag: "progress" }; };
-var finished = function (result) {
+"use strict";
+let finishCount = 0;
+let failCount = 0;
+const notStarted = () => { return { __tag: "notStarted" }; };
+const progress = () => { return { __tag: "progress" }; };
+const finished = (result) => {
     function constructor() {
         finishCount = finishCount + 1;
     }
     constructor();
     return { __tag: "finished", val: result };
 };
-var fail = function (error) {
+const fail = (error) => {
     function constructor() {
         failCount = failCount + 1;
     }
     constructor();
     return { __tag: "fail", val: error };
 };
-// class implementation ///////////////////////////////////////////////
-var notStarted2 = /** @class */ (function () {
-    function notStarted2() {
+class notStarted2 {
+    constructor() {
         this.__tag = "notStarted";
     }
-    return notStarted2;
-}());
-var progress2 = /** @class */ (function () {
-    function progress2() {
+}
+class progress2 {
+    constructor() {
         this.__tag = "progress";
     }
-    return progress2;
-}());
-var finished2 = /** @class */ (function () {
-    function finished2(val) {
+}
+class finished2 {
+    constructor(val) {
         this.__tag = "finished";
         this.val = val;
     }
-    return finished2;
-}());
-var fail2 = /** @class */ (function () {
-    function fail2(val) {
+}
+class fail2 {
+    constructor(val) {
         this.__tag = "fail";
         this.val = val;
     }
-    return fail2;
-}());
-// typeGuards /////////////////////////////////////////////////////////
-var isNotStarted = function (option) { return option.__tag == "notStarted"; };
-var isProgress = function (option) { return option.__tag == "progress"; };
-var isFinished = function (option) {
-    return option.__tag == "finished";
-};
-var isFail = function (option) { return option.__tag == "fail"; };
-// Fold function   ///////////////////////////////////////////////////////
-var fold = function (option, d) {
+}
+const isNotStarted = (option) => option.__tag == "notStarted";
+const isProgress = (option) => option.__tag == "progress";
+const isFinished = (option) => option.__tag == "finished";
+const isFail = (option) => option.__tag == "fail";
+const fold = (option, d) => {
     if (isFinished(option)) {
         return option.val;
     }
@@ -63,12 +54,7 @@ var fold = function (option, d) {
         return d();
     }
 };
-// console.log(fold(finished("done"), () => "none"))
-// finished(2)
-// finished("hello")
-// console.log("Number of times progress finishes", finishCount)
-// console.log(new finished2(2).val)
-var match = function (option, finish, fail, notStart, progress, d) {
+const match = (option, finish, fail, notStart, progress) => {
     switch (option.__tag) {
         case "finished":
             return finish(option.val);
@@ -78,11 +64,9 @@ var match = function (option, finish, fail, notStart, progress, d) {
             return notStart();
         case "progress":
             return progress();
-        default:
-            return d();
     }
 };
-var partialMatcher = function (option, d, finish, fail, notStart, progress) {
+const partialMatcher = (option, d, finish, fail, notStart, progress) => {
     switch (option.__tag) {
         case "finished":
             if (finish !== undefined) {
@@ -116,3 +100,4 @@ var partialMatcher = function (option, d, finish, fail, notStart, progress) {
             return d();
     }
 };
+//# sourceMappingURL=task1.js.map

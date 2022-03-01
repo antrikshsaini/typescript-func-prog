@@ -2,6 +2,8 @@
 // Employing functional programming in an application
 
 import * as R from 'ramda'
+// import * as tree from "@antrikshsaini/tree-npm"
+import { map as treemap, Tree } from "@antrikshsaini/tree-npm"
 
 interface Entity {
     id: string;
@@ -161,3 +163,13 @@ const mapReduce = () => {
 
 
 }
+const tree2: Tree<number> = {
+    tag: 'branch',
+    left: { tag: 'leaf', value: 2 },
+    right: {
+        tag: 'branch',
+        left: { tag: 'leaf', value: 3 },
+        right: { tag: 'leaf', value: 4 },
+    },
+};
+console.log(treemap((i: number) => i + 1, tree2));
