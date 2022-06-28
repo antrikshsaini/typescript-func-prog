@@ -12,11 +12,6 @@
     - [Deliverables](#deliverables-1)
     - [Extensions](#extensions)
     - [Important Links](#important-links)
-  - [Task 3 (FP Identifications)](#task-3-fp-identifications)
-    - [Background](#background-2)
-    - [Deliverables](#deliverables-2)
-    - [Extensions](#extensions-1)
-    - [Important Links](#important-links-1)
 
 ## Task 1 (Function implementations)
 
@@ -119,31 +114,6 @@ type ApiResponse<T extends Entity> =
 ### Important Links
 
 [JSON Placeholder](https://jsonplaceholder.typicode.com/)
-
-## Task 3 (FP Identifications)
-
-> Identification of FP opportunities within the HeyAuto codebase
-
-### Background
-
-Thus far, we have covered some pillars of functional programming. These include but are not limited to: partial application, deconstruction/construction, set theory, referential transparency, higher-order functions, expressions/statements etc. In association with these topics we have gone over immutability, side effects, readability, DRY, and other benefits of FP.
-
-### Deliverables
-
-1. Within react, identify an area of code that suffers from duplication, side effects, redundancy and refactor it using our understanding of functional programming
-
-   - In react, higher-order functions are known as "Higher-order components" or HOC's
-   - Take a look at `React.FC`, `React.PropsWithChildren`, and components prefixed with a `with`
-
-2. Within nest.js, identify an area of code that suffers from duplication, side effects, redundancy and refactor it using our understanding of functional programming
-
-   - Typical areas of affliction are found in `.service.ts` files
-   - Use `ramda`, `fp-ts`, `lodash/fp`, `ts-pattern`, `morphic-ts`, or `optics-ts`
-
-### Extensions
-
-- What systems or constraints can we employ to aid in DRY, side effect free code?
-- How is the decorator pattern a form of function composition?
 
 ### Important Links
 
