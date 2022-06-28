@@ -1,2 +1,2 @@
-# typescript-Assignment2
-Functional Programming Assignment using Typescript
+# typescript-functional-programming
+Functional Programming using Typescript, Implementation of tree-npm package
