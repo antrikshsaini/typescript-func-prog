@@ -1,4 +1,3 @@
-// //////////// HeyAuto in yd-buyer views SignInUpSocialsV2.tsx ///////////////////////////
 
 // import {Grid, GridProps} from '@material-ui/core';
 // import {Theme, createStyles, makeStyles} from '@material-ui/core/styles';
